@@ -13,28 +13,20 @@ import androidx.lifecycle.LifecycleEventObserver
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.ProcessLifecycleOwner
 
-class ChangeAppIconService : Service(), LifecycleEventObserver {
+class ChangeAppIconService : Service() {
     private val TAG = "AppIconService"
 
     override fun onBind(intent: Intent?): IBinder? = null
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
-        ProcessLifecycleOwner.get().lifecycle.addObserver(this)
         return super.onStartCommand(intent, flags, startId)
     }
 
     override fun onTaskRemoved(rootIntent: Intent?) {
         Log.e(TAG, "onTaskRemoved: ")
+        AppIconUtils.changeAppIcon(applicationContext)
+        stopSelf()
 
-    }
-
-    override fun onStateChanged(source: LifecycleOwner, event: Event) {
-        if (event == ON_STOP) {
-            Log.e(TAG, "onStateChanged: ON_STOP")
-            AppIconUtils.changeAppIcon(applicationContext)
-            ProcessLifecycleOwner.get().lifecycle.removeObserver(this)
-            stopSelf()
-        }
     }
 
 }

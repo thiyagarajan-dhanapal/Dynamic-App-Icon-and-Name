@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <application
+        android:name=".BaseApplication"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -54,7 +55,7 @@
 
         <service
             android:name="com.thiyagatrev.dynamic.ChangeAppIconService"
-            android:stopWithTask="true" />
+            android:stopWithTask="false" />
     </application>
 
 </manifest>
