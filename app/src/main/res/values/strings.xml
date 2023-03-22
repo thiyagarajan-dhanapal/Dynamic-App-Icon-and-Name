@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Dynamic App Icon and Name</string>
+    <string name="title_activity_base_mk1">BaseActivityMk1</string>
+    <string name="title_activity_base_mk2">BaseActivityMk2</string>
+</resources>
